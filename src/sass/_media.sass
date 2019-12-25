@@ -1,0 +1,193 @@
+@media screen and ( max-width: 1204px )
+  html
+    font-size: 12px
+  .nav
+    &__item
+      margin-right: 1rem
+  .section__people
+    display: none
+  .team
+    padding-bottom: 27.142rem
+@media screen and ( max-width: 1270px )
+  .contacts
+    &__phone
+      margin-right: 0
+    &__button
+      margin-left: 1rem
+@media screen and ( max-width: 1040px )
+  .section
+    &-title
+      &__text
+        max-width: 23rem
+@media screen and ( max-width: 992px )
+  .nav
+    display: none
+  .hero
+    &__instagram
+      display: none
+    &__content
+      margin-left: 0
+  .map
+    max-width: 50rem
+@media screen and ( max-width: 760px )
+  .contacts
+    &__button
+      display: none
+  .control
+    padding-bottom: 0
+    background-color: $dark
+    &__video
+      max-width: 45.357rem
+      max-height: 14.7rem
+      background-size: cover
+    &__text
+      color: $light
+      font-size: 1.1rem
+    &__form
+      flex-direction: column
+    &__label 
+      color: rgba($light, 0.5)
+    &__input
+      margin-bottom: 3.3rem
+      &:last-of-type
+        margin-bottom: 1.1rem
+      &::placeholder
+        color: $light
+    &__policy-label
+      color: $light
+    &__policy
+      margin-bottom: 2.7rem
+    &__button
+      order: 2
+  .video
+    &__play
+      width: 5rem
+      height: 5rem
+  .row
+    flex-direction: column
+    align-items: center
+  .types
+    margin-top: -3rem
+    background-color: $light
+    &__card
+      margin-bottom: 5.7rem
+  .card
+    &__text
+      margin-left: 0
+      max-height: 21rem
+    &__item
+      &--hidden
+        &::after
+          content: '...'
+          position: absolute
+          margin-left: 2px
+          z-index: 199
+          font-size: 1.07rem
+          color: $secondary
+      &:nth-child(n+8)
+        visibility: hidden
+  .team
+    padding-bottom: 15rem
+    background-color: $dark
+    &__card
+      margin-bottom: 8rem
+    &__text
+      display: none
+  .card
+    &__text
+      &--small
+        margin-left: auto
+        margin-right: auto
+  .section
+    &-title
+      &__description
+        &--small
+          max-width: 31rem
+  .swiper
+    &-slider
+      &-image
+        margin-top: 0
+  .mobile-order-top
+    order: -1
+  .col
+    &-40, &-60
+      width: 100%
+  .section
+    &-title
+      &--left
+        text-align: center
+      &__heading
+        display: flex
+        flex-direction: column
+        align-items: center
+      &__word
+        &::after
+          display: none
+      &__text
+        margin: auto
+        max-width: 30.5rem
+  .footer
+    background: $dark
+    &__container
+      width: 100%
+      background: $dark
+    &__form
+      flex-direction: column
+    &__wrap
+      background: $dark
+    &__policy
+      display: flex
+    &__button
+      width: 100%
+      border-radius: 0
+    &__map
+      order: -1
+      width: 90%
+      margin: auto
+      height: 18.21rem
+      margin-bottom: 3.07rem
+    &__menu
+      display: none
+  .direction
+    max-width: 25rem
+// mobile first today
+@media screen and ( min-width: 760px )
+  .row
+    flex-direction: row
+    justify-content: space-between
+  .card
+    flex-basis: 32%
+@media screen and ( max-width: 570px )
+  .section
+    &-title
+      &__description
+        max-width: 21.86rem
+        &--small
+          max-width: 31rem
+  .contacts
+    &__phone
+      margin-right: 0
+      color: $light
+      border: none
+    &__button
+      display: none
+  .title
+    font-size: 1.64rem
+    line-height: 2.18rem
+  .hero
+    &__scroll-down
+      display: none
+    &__content
+      max-width: 22.86rem 
+    &__text
+      font-size: 1.29rem
+      line-height: 1.736rem
+      margin-bottom: 2.28rem
+    &__button
+      display: block
+      min-width: 22.86rem
+      margin-bottom: 1.85rem
+@media screen and ( max-height: 520px )
+  .hero
+    &__scroll-down
+      display: none
