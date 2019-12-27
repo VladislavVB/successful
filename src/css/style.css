@@ -419,33 +419,6 @@ template {
     -webkit-box-pack: center;
     justify-content: center; }
 
-.scroll-to-top {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background: rgba(19, 19, 19, 0.3);
-  width: 40px;
-  height: 40px;
-  padding: 12px;
-  border-radius: 50%;
-  opacity: 0.2;
-  cursor: pointer;
-  -webkit-transition: all .5s;
-  transition: all .5s;
-  display: none;
-  border: 2px solid #E3B873;
-  background: url(../img/arrow-up.svg) no-repeat center;
-  rotate: 180deg;
-  text-align: center; }
-  .scroll-to-top::after {
-    content: '';
-    width: 30px;
-    height: 30px;
-    margin-left: 19px; }
-  .scroll-to-top:hover {
-    opacity: 0.7;
-    box-shadow: 0 0 10px rgba(19, 19, 19, 0.4); }
-
 input.invalid {
   border-bottom: 1px solid #f52f2f; }
 
