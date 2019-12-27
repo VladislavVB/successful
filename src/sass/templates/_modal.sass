@@ -39,6 +39,7 @@
     margin-bottom: 1.7rem
     font-family: 'Yeseva One', cursive
     font-size: 1.357rem
+    font-weight: normal
     line-height: 1.5
     text-align: center
   &__form
@@ -61,3 +62,86 @@
   .policy
     &__label
       font-size: 1.14rem
+.modal
+  &-up
+    opacity: 0
+    visibility: hidden
+    position: fixed
+    z-index: 219
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 100%
+    background-color: rgba($dark, 0.6)
+    &--visible
+      opacity: 1
+      visibility: visible
+    &__dialog
+      position: relative
+      z-index: 399
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      width: 36.36rem
+      min-height: 20rem
+      padding: 2.357rem 3.6rem
+      font-size: 1.5rem
+      color: $light
+      background: $dark
+      border: 1px solid $light
+    &__close
+      position: absolute
+      z-index: 599
+      right: 0
+      top: 0
+      width: 28px
+      height: 28px
+      margin: 14px
+      background: transparent url('../img/modal/close.svg') no-repeat center
+      border: none
+      outline: none
+      cursor: pointer
+    &__title
+      margin: 0
+      margin-bottom: 1rem
+      font-family: 'Yeseva One', cursive
+      font-size: 1.357rem
+      font-weight: normal
+      line-height: 1.5
+      text-align: center
+    &__social
+      display: flex
+      flex-direction: column
+.social
+  &-wrap
+    display: flex
+    justify-content: center
+    padding-top: 1.5rem
+  &__link
+    display: inline-block
+    width: 3.5rem
+    height: 3.5rem
+    margin-right: 1rem
+    background-color: $primary
+    background-repeat: no-repeat
+    background-position: center
+    border-radius: 50%
+    &--vk
+      background-image: url('../img/vk.svg')
+    &--instagram
+      background-image: url('../img/insta.svg') 
+    &--fb
+      background-image: url('../img/fb.svg')
+  &__title
+    font-family: 'Yeseva One', cursive
+    font-size: 1.3rem
+    font-weight: normal
+    line-height: 1.5
+    color: $primary
+   

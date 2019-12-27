@@ -1,14 +1,10 @@
-@media screen and ( max-width: 1204px )
+@media screen and ( max-width: 1200px )
   html
     font-size: 12px
   .nav
     &__item
       margin-right: 1rem
-  .section__people
-    display: none
-  .team
-    padding-bottom: 27.142rem
-@media screen and ( max-width: 1270px )
+@media screen and ( max-width: 1206px )
   .contacts
     &__phone
       margin-right: 0
@@ -27,8 +23,10 @@
       display: none
     &__content
       margin-left: 0
-  .map
-    max-width: 50rem
+  .customers
+    &__card
+      max-width: 18rem
+// desktop first today
 @media screen and ( max-width: 760px )
   .contacts
     &__button
@@ -126,6 +124,8 @@
       &__text
         margin: auto
         max-width: 30.5rem
+  .customers
+    display: none
   .footer
     background: $dark
     &__container
@@ -161,9 +161,7 @@
   .section
     &-title
       &__description
-        max-width: 21.86rem
-        &--small
-          max-width: 31rem
+        max-width: 31rem
   .contacts
     &__phone
       margin-right: 0

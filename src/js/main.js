@@ -1,88 +1,50 @@
-/* js
-document.addEventListener("DOMContentLoaded", function (event) {
-  const modal = document.querySelector('.modal');
-  const modalBtn = document.querySelectorAll('[data-toggle=modal]');
-  const closeBtn = document.querySelector('.modal__close');
-  const switchModal = () => {
-    modal.classList.toggle('modal--visible');
-  }
-
-  modalBtn.forEach(element => {
-    element.addEventListener('click', switchModal);
-  });
-
-  closeBtn.addEventListener('click', switchModal);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.keyCode === 27) {switchModal() }
-  });
-
-  document.addEventListener('click', function(e) {
-    e.target.classList.toggle('.modal--visible')
-    });
-  
-  });
-*/
-
-// jquery
 $(document).ready(function () {
  
-  var modal = $('.modal'),
-    modalBtn = $('[data-toggle=modal]'),
-    closeBtn = $('.modal__close');
+  var modal = $('.modal');
+  var modalUp = $('.modal-up');
   
-  modalBtn.on('click', function () {
+  var modalForm = $('.modal__form');
+  var controlForm = $('.control__form');
+  var footerForm = $('.footer__form');
+  
+  onSubmitForm(modalForm)
+  onSubmitForm(controlForm)
+  onSubmitForm(footerForm)
+
+  $('[data-toggle=modal]').on('click', function () {
     modal.toggleClass('modal--visible');
   });
 
-  closeBtn.on('click', function () {
+  $('.modal__close').on('click', function () {
     modal.toggleClass('modal--visible');
+  });
+
+  $('.modal-up__close').on('click', function () {
+    modalUp.removeClass('modal-up--visible');
   });
 
   $(document).keydown(function () {
     if (event.keyCode == 27) {
       modal.removeClass('modal--visible');
-    }
-  }); 
-
-  $(document).click(function (event) {
-    $(event.target).toggleClass('modal--visible');
-  });
-
-  $(function(){
-	$(window).scroll(function(){
-  	if ($(document).scrollTop()>$(window).height()){
-    	 $('.scroll-to-top').show();
-    } else{
-    	$('.scroll-to-top').hide();
+      modalUp.removeClass('modal-up--visible');
     }
   });
-  $('.scroll-to-top').click(function(){
-  	$('html,body').animate({scrollTop: 0}, 1000);
-  });
-});
 
-$('#offer-form').on('submit', function name(event) {
-  event.preventDefault();
-  $.ajax({
-    type: "POST",
-    url: "send.php",
-    datd: $(this).serialize(),
-    success: function (response) {
-      console.log('Прибыли данные: ' + response);
-      $('#offer-form')[0].reset();
-      modal.classList.add('modal_active');
-      $(".modal-dialog__title").text(response);
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.error(jqXHR + " " + textStatus);
-      
-    }
-    
+  $(function () {
+    $(window).scroll(function () {
+      if ($(document).scrollTop() > $(window).height()) {
+        $('.scroll-to-top').show();
+      } else {
+        $('.scroll-to-top').hide();
+      }
+    });
+    $('.scroll-to-top').click(function () {
+      $('html,body').animate({ scrollTop: 0 }, 1000);
+    });
   });
-})
-// slider
-  var mySwiper = new Swiper ('.swiper-container', {
+
+  // slider
+  var mySwiper = new Swiper('.swiper-container', {
     loop: true,
     pagination: {
       el: '.swiper-pagination',
@@ -102,92 +64,110 @@ $('#offer-form').on('submit', function name(event) {
 
   new WOW().init();
 
-  //Валидация форма
-  $('.modal__form').validate({
+  modalForm.validate({
     errorClass: "invalid",
     errorElement: "div",
     rules: {
-      // строчное правило
+
       userName: {
         required: true,
-        minlength: 2,
-        maxlenght: 15 
+        minlength: 2
       },
       userPhone: "required",
-      // правило-объект (блок)
+ 
       userEmail: {
         required: true,
         email: true
+      }
+    }, 
+    messages: {
+      userName: {
+        required: "Имя обязательно для заполнения",
+        minlength: "Имя не короче 2-х букв"
+      },
+      userPhone: "Телефон обязателен для заполнения",
+      userEmail: {
+        required: "Обязательно укажите Email",
+        email: "Введите в формате: name@domain.com"
+      }
     }
-  }, // сообщения
-  messages: {
-    userName: {
-      required: "Имя обязательно для заполнения",
-      minlength: "Имя не короче 2-х букв"
-    },
-    userPhone: "Телефон обязателен для заполнения",
-    userEmail: {
-      required: "Обязательно укажите Email",
-      email: "Введите в формате: name@domain.com"
-    }
-  }
   });
 
-  $('.control__form').validate({
+  function onSubmitForm(form) { 
+   form.submit(function (event) {
+     if (form.valid()) {
+       event.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "send.php",
+          data: $(this).serialize(),
+          success: function (response) {
+           form[0].reset();
+           $('.modal').removeClass('modal--visible'); 
+           $('.modal-up').addClass('modal-up--visible');
+            console.log(response)
+            ym('56835025', 'reachGoal', 'submit'); return true
+          
+        },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.error(jqXHR + " " + textStatus);
+            
+       }
+       });
+  }});
+  }
+
+  controlForm.validate({
     errorClass: "invalid",
     errorElement: "div",
     rules: {
-      // строчное правило
-      userName: {
+      customerName: {
         required: true,
-        minlength: 2,
-        maxlenght: 15,
+        minlength: 2
       },
-      userPhone: "required",
-  }, // сообщения
+      customerPhone: "required",
+  }, 
   messages: {
-    userName: {
+    customerName: {
       required: "Имя обязательно для заполнения",
       minlength: "Имя не короче 2-х букв"
     },
-    userPhone: "Телефон обязателен для заполнения",
+    customerPhone: "Телефон обязателен для заполнения",
   }
   });
 
-   $('.footer__form').validate({
+   footerForm.validate({
     errorClass: "invalid",
     errorElement: "div",
     rules: {
-      // строчное правило
-      userName: {
+
+      clientName: {
         required: true,
-        minlength: 2,
-        maxlenght: 15, 
+        minlength: 2
       },
-      userPhone: "required",
-      userQuestion: "required",
+      clientPhone: "required",
+      clientQuestion: "required",
       
-  }, // сообщения
+  }, 
   messages: {
-   userName: {
+   clientName: {
       required: "Имя обязательно для заполнения",
       minlength: "Имя не короче 2-х букв"
     },
-    userPhone: "Телефон обязателен для заполнения",
-    userQuestion: "Пожалуйста, напишите Ваш вопрос",
+    clientPhone: "Телефон обязателен для заполнения",
+    clientQuestion: "Пожалуйста, напишите Ваш вопрос",
   }
   });
-
   
-  //маска для номера телефона
-
   $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "+7(___) ___-__-__" });
-  
-  // создание yandex карты
+
+});
+
+ /* // создание yandex карты
  ymaps.ready(function () {
    var myMap = new ymaps.Map('map', {
      center: [47.244734, 39.723227],
-     zoom: 15
+     zoom: 9
    }, {
      searchControlProvider: 'yandex#search'
    }),
@@ -205,7 +185,7 @@ $('#offer-form').on('submit', function name(event) {
        // Необходимо указать данный тип макета.
        iconLayout: 'default#image',
        // Своё изображение иконки метки.
-       iconImageHref: 'img/mapIcon.png',
+       iconImageHref: 'img/location-pin.png',
        // Размеры метки.
        iconImageSize: [32, 32],
        // Смещение левого верхнего угла иконки относительно
@@ -215,6 +195,4 @@ $('#offer-form').on('submit', function name(event) {
 
     myMap.geoObjects
         .add(myPlacemark);
-});
-
-});
+});*/

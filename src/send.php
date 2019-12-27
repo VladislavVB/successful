@@ -1,18 +1,14 @@
 <?php
-
 $userName = $_POST['userName'];
 $userPhone = $_POST['userPhone'];
 $userEmail = $_POST['userEmail'];
 $userQuestion = $_POST['userQuestion'];
-
 // Load Composer's autoloader
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
-
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer\PHPMailer\PHPMailer();
-
 try {
     //Server settings
     $mail->SMTPDebug = 0;                      // Enable verbose debug output
@@ -23,7 +19,6 @@ try {
     $mail->Password   = '89385143014';                        // SMTP password
     $mail->SMTPSecure = 'ssl';            // Enable TLS encryption; 
     $mail->Port       = 465;                                    // TCP port to connect to
-
     //Recipients
     $mail->setFrom('vladburdukovsky@yandex.ru', 'Владислав');
     $mail->addAddress('vlad.burdukoasky@yandex.ru');     // Add a recipient

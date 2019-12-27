@@ -5,6 +5,7 @@
   border-radius: 2px
   text-transform: uppercase
   font-size: 0.93rem
+  font-weight: 500
   &:hover
     cursor: pointer
   &--primary
@@ -23,10 +24,12 @@
 .label
   font-family: 'Futura Book', sans-serif
   font-size: 1.07rem
+  font-weight: normal
   &--light
     color: rgba($light, 0.5)
 .input
-  font-family: 'FuturaMediumCTT Normal', sans-serif
+  font-family: 'Futura Medium Normal', sans-serif
+  font-weight: normal
   background-color: transparent
   border: none
   border-bottom: 1px solid rgba(54, 54, 54, 0.3)
@@ -71,15 +74,34 @@
       margin-right: 0.62rem
     &--center
       justify-content: center
-
+.scroll-to-top
+  position: fixed
+  bottom: 40px
+  right: 40px
+  background: rgba($dark, 0.3)
+  width: 40px
+  height: 40px
+  padding: 12px
+  border-radius: 50%
+  opacity: 0.2
+  cursor: pointer
+  transition: all .5s
+  display: none
+  border: 2px solid $primary
+  background: url(../img/arrow-up.svg) no-repeat center
+  rotate: 180deg
+  text-align: center
+  &::after
+    content: ''
+    width: 30px
+    height: 30px
+    margin-left: 19px
+  &:hover
+    opacity: 0.7
+    box-shadow: 0 0 10px rgba($dark, 0.4)
 input
    &.invalid
-     border-bottom: 1px solid $primary
+     border-bottom: 1px solid $red
 div
   &.invalid
-    color: $primary
-.label
-  font-family: 'Futura Book', sans-serif
-  font-size: 1.07rem
-  &--lighter
-    color: $light 
+    color: $red
