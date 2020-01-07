@@ -30,7 +30,7 @@ try {
     $mail->Port       = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('burdukoaskijvladislav@gmail.com', 'Vladislav');
+    $mail->setFrom('burdukoaskijvladislav@gmail.com', 'Владислав');
     $mail->addAddress('burdukovskij.vlad@mail.ru');     // Add a recipient
     
     // Content
@@ -45,7 +45,7 @@ try {
     if ($mail->send()) {
         echo "Форма успешно отправлена";
     } else {
-        echo "Сообщение не был отправлено. Неверно указаны настройки вашей почты";
+        echo "Сообщение не было отправлено. Неверно указаны настройки вашей почты";
     }
 
     } catch (Exception $e) {

@@ -161,6 +161,22 @@ $(document).ready(function () {
   
   $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "+7(___) ___-__-__" });
 
+  var player;
+  $('.video__play').on('click', function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '465',
+      width: '100%',
+      videoId: 'ef0JqU-4dOc',
+      events: {
+        'onReady': videoPlay,
+      }
+    });
+  })
+
+  function videoPlay(event){
+    event.target.playVideo();
+  }
+
 });
 
  /* // создание yandex карты
