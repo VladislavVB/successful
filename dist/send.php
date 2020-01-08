@@ -9,12 +9,10 @@ $clientName = $_POST['clientName'];
 $clientPhone = $_POST['clientPhone'];
 $clientQuestion = $_POST['clientQuestion'];
 
-// Load Composer's autoloader
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 
-// Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->CharSet = 'utf-8';
 
@@ -41,7 +39,7 @@ try {
     $mail->send();
     // header('Location: index.html');
 
-// Проверяем результат отправки сообщения
+// Проверяем результат отправки
     if ($mail->send()) {
         echo "Форма успешно отправлена";
     } else {
