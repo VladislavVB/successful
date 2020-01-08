@@ -161,6 +161,8 @@ $(document).ready(function () {
   
   $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "+7(___) ___-__-__" });
 
+
+//видео
   var player;
   $('.video__play').on('click', function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -178,37 +180,3 @@ $(document).ready(function () {
   }
 
 });
-
- /* // создание yandex карты
- ymaps.ready(function () {
-   var myMap = new ymaps.Map('map', {
-     center: [47.244734, 39.723227],
-     zoom: 9
-   }, {
-     searchControlProvider: 'yandex#search'
-   }),
-
-     // Создаём макет содержимого.
-     MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-       '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-     ),
-
-     myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-       hintContent: 'Наш офис',
-       balloonContent: 'Вход со двора'
-     }, {
-       // Опции.
-       // Необходимо указать данный тип макета.
-       iconLayout: 'default#image',
-       // Своё изображение иконки метки.
-       iconImageHref: 'img/location-pin.png',
-       // Размеры метки.
-       iconImageSize: [32, 32],
-       // Смещение левого верхнего угла иконки относительно
-       // её "ножки" (точки привязки).
-      iconImageOffset: [-5, -38]
-     });
-
-    myMap.geoObjects
-        .add(myPlacemark);
-});*/

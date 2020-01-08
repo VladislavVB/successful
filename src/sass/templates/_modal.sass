@@ -67,7 +67,7 @@
     opacity: 0
     visibility: hidden
     position: fixed
-    z-index: 219
+    z-index: 419
     left: 0
     top: 0
     bottom: 0
@@ -83,21 +83,21 @@
       visibility: visible
     &__dialog
       position: relative
-      z-index: 399
+      z-index: 699
       display: flex
       flex-direction: column
       justify-content: center
       align-items: center
-      width: 36.36rem
+      width: 36rem
       min-height: 20rem
       padding: 2.357rem 3.6rem
       font-size: 1.5rem
       color: $light
       background: $dark
-      border: 1px solid $primary
+      border-radius: 4%
     &__close
       position: absolute
-      z-index: 599
+      z-index: 799
       right: 0
       top: 0
       width: 28px
@@ -115,6 +115,7 @@
       font-weight: normal
       line-height: 1.5
       text-align: center
+      color: $light
     &__social
       display: flex
       flex-direction: column
@@ -131,17 +132,16 @@
     background-color: $primary
     background-repeat: no-repeat
     background-position: center
-    border-radius: 50%
+    border-radius: 40%
     &--vk
       background-image: url('../img/vk.svg')
     &--instagram
       background-image: url('../img/insta.svg') 
-    &--fb
-      background-image: url('../img/fb.svg')
   &__title
     font-family: 'Yeseva One', cursive
     font-size: 1.3rem
     font-weight: normal
     line-height: 1.5
+    color: $light
     
    
