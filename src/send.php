@@ -3,20 +3,19 @@
 $userName = $_POST['userName'];
 $userPhone = $_POST['userPhone'];
 $userEmail = $_POST['userEmail'];
-$customerName = $_POST['customerName'];
-$customerPhone = $_POST['customerPhone'];
-$clientName = $_POST['clientName'];
-$clientPhone = $_POST['clientPhone'];
-$clientQuestion = $_POST['clientQuestion'];
+$userQuestion = $_POST['userQuestion'];
+$formName = $_POST['formName'];
 
+// Load Composer's autoloader
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
 
+// Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer\PHPMailer\PHPMailer();
-$mail->CharSet = 'utf-8';
 
 try {
+    $mail->CharSet = 'utf-8';
     //Server settings
     $mail->SMTPDebug = 0;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
@@ -33,17 +32,27 @@ try {
     
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = "New order";
-    $mail->Body    = "Имя пользователя ${userName}, его телефон: ${userPhone}. Его почта: ${userEmail} Его вопрос: ${userQuestion}";
+    $mail->Subject = "Новая заявка с сайта";
     
-    $mail->send();
-    // header('Location: index.html');
-
-// Проверяем результат отправки
-    if ($mail->send()) {
-        echo "Форма успешно отправлена";
+    if ($formName == 'modal-form') {
+        $mail->Body    = "Имя пользователя ${userName}, его телефон: ${userPhone}. Его почта: ${userEmail}";
+    } else if ($formName == 'control-form') {
+        $mail->Body    = "Имя пользователя ${userName}, его телефон: ${userPhone}.";
+    } else if ($formName == 'footer-form') {
+        $mail->Body    = "Имя пользователя ${userName}, его телефон: ${userPhone}. Его вопрос: ${userQuestion}";
     } else {
-        echo "Сообщение не было отправлено. Неверно указаны настройки вашей почты";
+        $mail->ErrorInfo = 'Invalid form name';
+        throw new Exception('Invalid form name');
+    }    
+    
+// header('Location: index.html');
+    
+    $result = $mail->send();
+    // Проверяем результат отправки сообщения
+    if ($result == true) {
+      echo "Форма успешно отправлена";
+    } else {
+       echo "Сообщение не был отправлено. Неверно указаны настройки вашей почты";
     }
 
     } catch (Exception $e) {

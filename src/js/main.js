@@ -1,3 +1,7 @@
+if(!window.jQuery){
+document.write('<script type="text/javascript" src="/js/lib/jquery.js"></script>')
+}
+
 $(document).ready(function () {
  
   var modal = $('.modal');
@@ -67,18 +71,27 @@ $(document).ready(function () {
   modalForm.validate({
     errorClass: "invalid",
     errorElement: "div",
+    errorPlacement: function (error, element) {
+        if (element.attr("type") == "checkbox") {
+          return element.next('label').append(error);
+        }
+        error.insertAfter($(element));
+    },
     rules: {
 
       userName: {
         required: true,
         minlength: 2
       },
+
       userPhone: "required",
  
       userEmail: {
         required: true,
         email: true
-      }
+      },
+
+      policyCheckbox: "required",
     }, 
     messages: {
       userName: {
@@ -89,7 +102,8 @@ $(document).ready(function () {
       userEmail: {
         required: "Обязательно укажите Email",
         email: "Введите в формате: name@domain.com"
-      }
+      },
+      policyCheckbox: "Обязательно для заполнения",
     }
   });
 
@@ -120,63 +134,204 @@ $(document).ready(function () {
   controlForm.validate({
     errorClass: "invalid",
     errorElement: "div",
+    errorPlacement: function (error, element) {
+        if (element.attr("type") == "checkbox") {
+          return element.next('label').append(error);
+        }
+        error.insertAfter($(element));
+    },    
     rules: {
-      customerName: {
+      userName: {
         required: true,
         minlength: 2
       },
-      customerPhone: "required",
+      userPhone: "required",
+      policyTick: "required",
   }, 
   messages: {
-    customerName: {
+    userName: {
       required: "Имя обязательно для заполнения",
       minlength: "Имя не короче 2-х букв"
     },
-    customerPhone: "Телефон обязателен для заполнения",
+    userPhone: "Телефон обязателен для заполнения",
+    policyTick: "Обязательно для заполнения",
   }
   });
 
    footerForm.validate({
     errorClass: "invalid",
-    errorElement: "div",
+     errorElement: "div",
+    errorPlacement: function (error, element) {
+        if (element.attr("type") == "checkbox") {
+          return element.next('label').append(error);
+        }
+        error.insertAfter($(element));
+    },    
     rules: {
 
-      clientName: {
+      userName: {
         required: true,
         minlength: 2
       },
-      clientPhone: "required",
-      clientQuestion: "required",
+      userPhone: "required",
+      userQuestion: "required",
+      policyMark: "required",
       
   }, 
   messages: {
-   clientName: {
+   userName: {
       required: "Имя обязательно для заполнения",
       minlength: "Имя не короче 2-х букв"
     },
-    clientPhone: "Телефон обязателен для заполнения",
-    clientQuestion: "Пожалуйста, напишите Ваш вопрос",
+    userPhone: "Телефон обязателен для заполнения",
+    userQuestion: "Пожалуйста, напишите Ваш вопрос",
+    policyMark: "Обязательно для заполнения",
   }
   });
   
   $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "+7(___) ___-__-__" });
 
-
 //видео
-  var player;
-  $('.video__play').on('click', function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '465',
-      width: '100%',
-      videoId: 'ef0JqU-4dOc',
-      events: {
-        'onReady': videoPlay,
+
+var player;
+$('.video__play').on('click', function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '465',
+    width: '100%',
+    videoId: 'ef0JqU-4dOc',
+    events: {
+      'onReady': videoPlay,
+    }
+  });
+})
+
+function videoPlay(event){
+  event.target.playVideo();
+}
+
+});
+
+//Переменная для включения/отключения индикатора загрузки
+var spinner = $('.ymap-container').children('.loader');
+//Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки при наведении)
+var check_if_load = false;
+//Необходимые переменные для того, чтобы задать координаты на Яндекс.Карте
+var myMapTemp, myPlacemarkTemp;
+ 
+//Функция создания карты сайта и затем вставки ее в блок с идентификатором &#34;map-yandex&#34;
+function init () {
+  var myMapTemp = new ymaps.Map('map', {
+    center: [47.244734, 39.723227],
+    zoom: 15
+  }, {
+    searchControlProvider: 'yandex#search'
+  }),
+    
+   myPlacemark = new ymaps.Placemark(myMapTemp.getCenter(), {
+      hintContent: 'Офис',
+      balloonContent: 'Вход с улицы'
+    }, {
+      // Опции.
+      // Необходимо указать данный тип макета.
+      iconLayout: 'default#image',
+      // Своё изображение иконки метки.
+      iconImageHref: 'img/mapIcon.png',
+      // Размеры метки.
+      iconImageSize: [32, 32],
+      // Смещение левого верхнего угла иконки относительно
+      // её "ножки" (точки привязки).
+      iconImageOffset: [-5, -38]
+    });
+
+  myMapTemp.geoObjects.add(myPlacemark); // помещаем флажок на карту
+ 
+  // Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
+  var layer = myMapTemp.layers.get(0).get(0);
+ 
+  // Решение по callback-у для определения полной загрузки карты
+  waitForTilesLoad(layer).then(function() {
+    // Скрываем индикатор загрузки после полной загрузки карты
+    spinner.removeClass('is-active');
+  });
+}
+ 
+// Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов) 
+function waitForTilesLoad(layer) {
+  return new ymaps.vow.Promise(function (resolve, reject) {
+    var tc = getTileContainer(layer), readyAll = true;
+    tc.tiles.each(function (tile, number) {
+      if (!tile.isReady()) {
+        readyAll = false;
       }
     });
-  })
-
-  function videoPlay(event){
-    event.target.playVideo();
+    if (readyAll) {
+      resolve();
+    } else {
+      tc.events.once("ready", function() {
+        resolve();
+      });
+    }
+  });
+}
+ 
+function getTileContainer(layer) {
+  for (var k in layer) {
+    if (layer.hasOwnProperty(k)) {
+      if (
+        layer[k] instanceof ymaps.layer.tileContainer.CanvasContainer
+        || layer[k] instanceof ymaps.layer.tileContainer.DomContainer
+      ) {
+        return layer[k];
+      }
+    }
   }
-
+  return null;
+}
+// Функция загрузки API Яндекс.Карт по требованию (в нашем случае при наведении)
+function loadScript(url, callback){
+  var script = document.createElement("script");
+ 
+  if (script.readyState){  // IE
+    script.onreadystatechange = function(){
+      if (script.readyState == "loaded" ||
+              script.readyState == "complete"){
+        script.onreadystatechange = null;
+        callback();
+      }
+    };
+  } else {  // Другие браузеры
+    script.onload = function(){
+      callback();
+    };
+  }
+ 
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
+} 
+// Основная функция, которая проверяет когда мы навели на блок с классом &#34;ymap-container&#34;
+var ymap = function() {
+  $('.ymap-container').mouseenter(function(){
+      if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
+ 
+	  	// Чтобы не было повторной загрузки карты, мы изменяем значение переменной
+        check_if_load = true; 
+ 
+		// Показываем индикатор загрузки до тех пор, пока карта не загрузится
+        spinner.addClass('is-active');
+ 
+		// Загружаем API Яндекс.Карт
+        loadScript("https://api-maps.yandex.ru/2.1/?apikey=fd888608-1cb5-480b-83f3-03c118516a8e&lang=ru_RU", function(){
+           // Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
+           ymaps.load(init);
+        });                
+      }
+    }
+  );  
+}
+ 
+$(function() {
+ 
+  //Запускаем основную функцию
+  ymap();
+ 
 });
