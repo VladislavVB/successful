@@ -8,6 +8,7 @@
   font-weight: 500
   &:hover
     cursor: pointer
+    background-color: $darkPrime
   &--primary
     background-color: $primary
     color: $light
@@ -19,6 +20,9 @@
     border: 1px solid $light
     background-color: transparent
     color: $light
+    &:hover
+      box-shadow: none
+      background-color: rgba(54, 54, 54, 0.3)
   &--big
     min-width: 14.8rem
 .label
@@ -76,7 +80,7 @@
       justify-content: center
 input
    &.invalid
-     border-bottom: 1px solid $red
+     border-bottom: 1px solid $primary
 div
   &.invalid
-    color: $red
+    color: $primary

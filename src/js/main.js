@@ -34,19 +34,6 @@ $(document).ready(function () {
     }
   });
 
-  $(function () {
-    $(window).scroll(function () {
-      if ($(document).scrollTop() > $(window).height()) {
-        $('.scroll-to-top').show();
-      } else {
-        $('.scroll-to-top').hide();
-      }
-    });
-    $('.scroll-to-top').click(function () {
-      $('html,body').animate({ scrollTop: 0 }, 1000);
-    });
-  });
-
   // slider
   var mySwiper = new Swiper('.swiper-container', {
     loop: true,
@@ -211,6 +198,7 @@ function videoPlay(event){
 
 });
 
+//КАРТА!!!
 //Переменная для включения/отключения индикатора загрузки
 var spinner = $('.ymap-container').children('.loader');
 //Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки при наведении)
@@ -227,32 +215,33 @@ function init () {
     searchControlProvider: 'yandex#search'
   }),
     
-   myPlacemark = new ymaps.Placemark(myMapTemp.getCenter(), {
-      hintContent: 'Офис',
-      balloonContent: 'Вход с улицы'
-    }, {
-      // Опции.
-      // Необходимо указать данный тип макета.
-      iconLayout: 'default#image',
-      // Своё изображение иконки метки.
-      iconImageHref: 'img/mapIcon.png',
-      // Размеры метки.
-      iconImageSize: [32, 32],
-      // Смещение левого верхнего угла иконки относительно
-      // её "ножки" (точки привязки).
-      iconImageOffset: [-5, -38]
-    });
-
-  myMapTemp.geoObjects.add(myPlacemark); // помещаем флажок на карту
- 
-  // Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
-  var layer = myMapTemp.layers.get(0).get(0);
- 
-  // Решение по callback-у для определения полной загрузки карты
-  waitForTilesLoad(layer).then(function() {
-    // Скрываем индикатор загрузки после полной загрузки карты
-    spinner.removeClass('is-active');
+  myPlacemark = new ymaps.Placemark(myMapTemp.getCenter(), {
+    hintContent: 'Наш офис',
+    balloonContent: 'Вход со двора'
+  }, {
+    // Опции.
+    // Необходимо указать данный тип макета.
+    iconLayout: 'default#image',
+    // Своё изображение иконки метки.
+    iconImageHref: 'img/marker.png',
+    // Размеры метки.
+    iconImageSize: [32, 32],
+    // Смещение левого верхнего угла иконки относительно
+    // её "ножки" (точки привязки).
+    iconImageOffset: [-5, -38]
   });
+
+myMapTemp.geoObjects.add(myPlacemark); // помещаем флажок на карту
+myMapTemp.behaviors.disable('scrollZoom'); 
+
+// Получаем первый экземпляр коллекции слоев, потом первый слой коллекции
+var layer = myMapTemp.layers.get(0).get(0);
+
+// Решение по callback-у для определения полной загрузки карты
+waitForTilesLoad(layer).then(function() {
+  // Скрываем индикатор загрузки после полной загрузки карты
+  spinner.removeClass('is-active');
+});
 }
  
 // Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов) 
