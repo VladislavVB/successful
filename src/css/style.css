@@ -1516,7 +1516,6 @@ img {
     .types__card {
       margin-bottom: 5.7rem; }
   .card__text {
-    margin-left: 0;
     max-height: 21rem; }
   .card__item--hidden::after {
     content: '...';
