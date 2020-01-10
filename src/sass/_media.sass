@@ -5,8 +5,17 @@
     &__item
       margin-right: 1rem
 @media screen and ( max-width: 1098px )
-  .clientele
-    display: none
+  /*.clientele
+    &__text
+      min-height: 250px*/
+  .pricetag
+    &__wrap
+      position: absolute 
+      bottom: 0
+  .card
+    &__description
+      min-width: 240px
+      min-height: 250px
   .team__text
     padding-bottom: 18rem
 @media screen and ( max-width: 1206px )
@@ -28,9 +37,8 @@
       display: none
     &__content
       margin-left: 0
-  .customers
-    &__card
-      max-width: 18rem
+  .clientele
+    display: none
   .map
     max-width: 48rem
   .button

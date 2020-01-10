@@ -1419,8 +1419,15 @@ img {
     margin-right: 1rem; } }
 
 @media screen and (max-width: 1098px) {
-  .clientele {
-    display: none; }
+  /*.clientele
+    &__text
+      min-height: 250px*/
+  .pricetag__wrap {
+    position: absolute;
+    bottom: 0; }
+  .card__description {
+    min-width: 240px;
+    min-height: 250px; }
   .team__text {
     padding-bottom: 18rem; } }
 
@@ -1441,8 +1448,8 @@ img {
     display: none; }
   .hero__content {
     margin-left: 0; }
-  .customers__card {
-    max-width: 18rem; }
+  .clientele {
+    display: none; }
   .map {
     max-width: 48rem; }
   .button {
