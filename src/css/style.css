@@ -1459,6 +1459,8 @@ img {
     display: none; } }
 
 @media screen and (max-width: 760px) {
+  .hero {
+    padding-top: 5rem; }
   .contacts__button {
     display: none; }
   .control {
@@ -1478,7 +1480,8 @@ img {
     .control__label {
       color: rgba(255, 255, 255, 0.5); }
     .control__input {
-      margin-bottom: 3.3rem; }
+      margin-bottom: 3.3rem;
+      color: #ffffff; }
       .control__input:last-of-type {
         margin-bottom: 1.1rem; }
       .control__input::-webkit-input-placeholder {
@@ -1525,23 +1528,25 @@ img {
   .card__item:nth-child(n+8) {
     visibility: hidden; }
   .team {
-    padding-bottom: 20rem;
+    margin-bottom: 11rem;
     background-color: #131313; }
     .team__card {
       margin-bottom: 8rem; }
     .team__text {
       display: none; }
-  .card__text--small {
+  .card__text--down {
     margin-left: auto;
     margin-right: auto; }
-  .section-title__description--small {
+  .section-title__description--down {
     max-width: 31rem; }
   .swiper-slider-image {
     margin-top: 0; }
   .mobile-order-top {
     -webkit-box-ordinal-group: 0;
     order: -1; }
-  .col-40, .col-60 {
+  .col-60 {
+    width: 100%; }
+  .col-40 {
     width: 100%; }
   .section-title--left {
     text-align: center; }
@@ -1585,7 +1590,11 @@ img {
     .footer__menu {
       display: none; }
   .direction {
-    max-width: 25rem; } }
+    max-width: 25rem; }
+  .modal__dialog {
+    max-width: 28rem; }
+  .modal-up__dialog {
+    max-width: 27rem; } }
 
 @media screen and (min-width: 760px) {
   .row {
@@ -1609,18 +1618,22 @@ img {
   .title {
     font-size: 1.64rem;
     line-height: 2.18rem; }
-  .hero__scroll-down {
-    display: none; }
-  .hero__content {
-    max-width: 22.86rem; }
-  .hero__text {
-    font-size: 1.29rem;
-    line-height: 1.736rem;
-    margin-bottom: 2.28rem; }
-  .hero__button {
-    display: block;
-    min-width: 22.86rem;
-    margin-bottom: 1.85rem; } }
+  .hero {
+    height: 60vh; }
+    .hero__scroll-down {
+      display: none; }
+    .hero__content {
+      max-width: 22.86rem;
+      margin-left: auto;
+      margin-right: auto; }
+    .hero__text {
+      font-size: 1.29rem;
+      line-height: 1.736rem;
+      margin-bottom: 2.28rem; }
+    .hero__button {
+      display: block;
+      min-width: 22.86rem;
+      margin-bottom: 1.85rem; } }
 
 @media screen and (max-height: 520px) {
   .hero__scroll-down {

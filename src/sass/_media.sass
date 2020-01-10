@@ -48,6 +48,8 @@
     display: none
   
 @media screen and ( max-width: 760px )
+  .hero
+    padding-top: 5rem
   .contacts
     &__button
       display: none
@@ -67,6 +69,7 @@
       color: rgba($light, 0.5)
     &__input
       margin-bottom: 3.3rem
+      color: $light
       &:last-of-type
         margin-bottom: 1.1rem
       &::placeholder
@@ -105,7 +108,7 @@
       &:nth-child(n+8)
         visibility: hidden
   .team
-    padding-bottom: 20rem
+    margin-bottom: 11rem
     background-color: $dark
     &__card
       margin-bottom: 8rem
@@ -113,13 +116,13 @@
       display: none
   .card
     &__text
-      &--small
+      &--down
         margin-left: auto
         margin-right: auto
   .section
     &-title
       &__description
-        &--small
+        &--down
           max-width: 31rem
   .swiper
     &-slider
@@ -128,7 +131,9 @@
   .mobile-order-top
     order: -1
   .col
-    &-40, &-60
+    &-60
+      width: 100%
+    &-40
       width: 100%
   .section
     &-title
@@ -168,6 +173,12 @@
       display: none
   .direction
     max-width: 25rem
+  .modal
+    &__dialog
+      max-width: 28rem
+  .modal-up
+    &__dialog
+      max-width: 27rem
 @media screen and ( min-width: 760px )
   .row
     flex-direction: row
@@ -190,10 +201,13 @@
     font-size: 1.64rem
     line-height: 2.18rem
   .hero
+    height: 60vh
     &__scroll-down
       display: none
     &__content
-      max-width: 22.86rem 
+      max-width: 22.86rem
+      margin-left: auto
+      margin-right: auto
     &__text
       font-size: 1.29rem
       line-height: 1.736rem
@@ -205,4 +219,4 @@
 @media screen and ( max-height: 520px )
   .hero
     &__scroll-down
-      display: none
+      display: none 
