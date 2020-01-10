@@ -363,6 +363,7 @@ template {
     color: rgba(255, 255, 255, 0.5); }
 
 .input {
+  outline: none;
   font-family: 'Futura Medium Normal', sans-serif;
   font-weight: normal;
   background-color: transparent;
@@ -407,6 +408,7 @@ template {
     cursor: pointer; }
 
 .policy__label {
+  outline: none;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -425,9 +427,10 @@ template {
     justify-content: center; }
 
 input.invalid {
-  border-bottom: 1px solid #E3B873; }
+  border-bottom: 0px solid #E3B873; }
 
 div.invalid {
+  outline: none;
   color: #E3B873; }
 
 .container {

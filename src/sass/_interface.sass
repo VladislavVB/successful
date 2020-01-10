@@ -26,12 +26,14 @@
   &--big
     min-width: 14.8rem
 .label
+  outline:none
   font-family: 'Futura Book', sans-serif
   font-size: 1.07rem
   font-weight: normal
   &--light
     color: rgba($light, 0.5)
 .input
+  outline: none
   font-family: 'Futura Medium Normal', sans-serif
   font-weight: normal
   background-color: transparent
@@ -65,6 +67,7 @@
     &:hover
       cursor: pointer
   &__label
+    outline: none
     display: flex
     align-items: center
     font-size: 1.142rem
@@ -81,8 +84,9 @@
 input
   outline:none
   &.invalid
-    border-bottom: 1px solid $primary
+    border-bottom: 0px solid $primary
      
 div
   &.invalid
+    outline: none
     color: $primary
