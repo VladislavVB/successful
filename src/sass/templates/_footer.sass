@@ -24,6 +24,7 @@
     margin: auto
   &__input
     padding-top: 1.3rem
+    color: $light
     &-group
       display: flex
       flex-direction: column
@@ -46,8 +47,7 @@
   &__map
     width: 66rem
     height: 33.214rem
-    margin-bottom: 3.07rem
-
+    margin-bottom: 4.4rem  
 .map
   &__iframe
     width: 100%
@@ -60,8 +60,8 @@
     background: $light url('../img/load-marker.jpg')  no-repeat
     background-position: center center
     background-size: cover
-    box-shadow: 0 0 2em  0 rgba(0,0,0,.2)
-/* Блок, в котором появится Яндекс.Карта */
+    box-shadow: 0 0 2em  0 rgba($dark, 0.2)
+/* Яндекс.Карта */
 .map
   &-yandex 
     position: relative
@@ -94,7 +94,6 @@
     opacity: 0.5
   to 
     opacity: 1
-
 .direction
   display: flex
   flex-direction: column

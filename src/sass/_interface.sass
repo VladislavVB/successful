@@ -8,7 +8,6 @@
   font-weight: 500
   &:hover
     cursor: pointer
-    background-color: $darkPrime
   &--primary
     background-color: $primary
     color: $light
@@ -16,24 +15,26 @@
     transition: box-shadow 0.3s
     &:hover
       box-shadow: none
+    &:active
+      box-shadow: inset 0 3px 3px rgba($dark, 0.3)
   &--outline
     border: 1px solid $light
     background-color: transparent
     color: $light
     &:hover
-      box-shadow: none
-      background-color: rgba(54, 54, 54, 0.3)
+      background-color: rgba($light, 0.4)
+      transition: 0.3s
+    &:active
+      box-shadow: inset 0 3px 3px rgba($dark, 0.3)
   &--big
     min-width: 14.8rem
 .label
-  outline:none
   font-family: 'Futura Book', sans-serif
   font-size: 1.07rem
   font-weight: normal
   &--light
     color: rgba($light, 0.5)
 .input
-  outline: none
   font-family: 'Futura Medium Normal', sans-serif
   font-weight: normal
   background-color: transparent
@@ -67,9 +68,9 @@
     &:hover
       cursor: pointer
   &__label
-    outline: none
     display: flex
     align-items: center
+    margin-bottom: 10px
     font-size: 1.142rem
     &::before
       content: ''
@@ -82,11 +83,22 @@
     &--center
       justify-content: center
 input
-  outline:none
-  &.invalid
-    border-bottom: 0px solid $primary
+   &.invalid
+      border-bottom: none
      
 div
   &.invalid
     outline: none
     color: $primary
+    position: absolute
+.control
+  &__policy .invalid
+    text-align: center
+  &__input
+    &-group .invalid
+      bottom: -3px
+.footer
+  &__policy .invalid
+    text-align: center
+.policy .invalid
+   border-top: none

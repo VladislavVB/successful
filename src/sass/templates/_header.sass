@@ -12,7 +12,6 @@
   align-items: center
 .logo
   font-size: 1.075rem
-  color: $primary
   text-transform: uppercase
   &__link
     text-decoration: none
@@ -30,8 +29,11 @@
   text-decoration: none
   color: $primary
   border-bottom: 1px solid $primary
+  &:hover
+    border-bottom: none
+    transition: 0.3s
+  &:active
+    color: $light
 .contacts
   &__phone
     margin-right: 1rem
-
-  

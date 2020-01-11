@@ -21,7 +21,7 @@
     max-width: 36.36rem
     padding: 2.357rem 3.6rem 1.928rem
     color: $light
-    background: $dark url('../img/bg-lines-light.svg') no-repeat center
+    background: $dark url('../img/bg-lines-light.svg') repeat 100% 100% / cover
   &__close
     position: absolute
     right: 0
@@ -67,7 +67,7 @@
     opacity: 0
     visibility: hidden
     position: fixed
-    z-index: 419
+    z-index: 219
     left: 0
     top: 0
     bottom: 0
@@ -94,7 +94,7 @@
       font-size: 1.5rem
       color: $light
       background: $dark
-      border-radius: 4%
+      border-radius: 12%
     &__close
       position: absolute
       z-index: 799
@@ -115,7 +115,6 @@
       font-weight: normal
       line-height: 1.5
       text-align: center
-      color: $light
     &__social
       display: flex
       flex-direction: column
