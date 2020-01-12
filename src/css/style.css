@@ -335,7 +335,8 @@ template {
   font-size: 0.93rem;
   font-weight: 500; }
   .button:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    background-color: #b18d53; }
   .button--primary {
     background-color: #E3B873;
     color: #ffffff;
@@ -375,6 +376,11 @@ template {
   font-size: 1.285rem;
   color: #ffffff;
   padding: 0.5rem 0; }
+  .input:focus {
+    outline: none;
+    box-shadow: inset 2px 2px #E3B873, inset -2px -2px #E3B873; }
+  .input-group {
+    position: relative; }
   .input--light::-webkit-input-placeholder {
     color: #ffffff;
     font-size: 1.285rem; }
@@ -433,15 +439,19 @@ input.invalid {
   border-bottom: none; }
 
 div.invalid {
-  outline: none;
+  position: absolute;
+  width: 100%;
+  bottom: -12px;
   color: #E3B873;
-  position: absolute; }
+  border-top: 1px solid #E3B873; }
 
 .control__policy .invalid {
   text-align: center; }
 
-.control__input-group .invalid {
-  bottom: -3px; }
+.control__input {
+  color: #363636; }
+  .control__input-group .invalid {
+    bottom: -3px; }
 
 .footer__policy .invalid {
   text-align: center; }
@@ -711,7 +721,7 @@ img {
       content: '';
       position: absolute;
       left: 95px;
-      top: 5.5px;
+      top: 3.5px;
       width: 50px;
       height: 1px;
       background-color: #E3B873; }
@@ -741,6 +751,7 @@ img {
   .swiper-slider-text {
     max-width: 22.71rem; }
   .swiper-slide__text {
+    max-width: 190px;
     flex-basis: 50%;
     margin-bottom: 1.8rem; }
   .swiper-slide__heading {
@@ -847,6 +858,8 @@ img {
   .control__button {
     padding: 1.2857rem 4.7857rem;
     margin-bottom: 1.2rem; }
+    .control__button::hover {
+      background-color: #b18d53; }
   .control__policy {
     align-self: flex-start;
     flex-basis: 100%;
@@ -857,7 +870,7 @@ img {
   .control__label {
     color: rgba(54, 54, 54, 0.5); }
   .control__input {
-    color: #131313; }
+    color: #363636; }
 
 .video__play {
   position: absolute;
@@ -1123,7 +1136,7 @@ img {
     background: #181818 url("../img/bg-lines-light.svg") no-repeat center;
     max-width: 63.07rem;
     margin: auto;
-    margin-top: -18.5rem;
+    margin-top: -19.5rem;
     padding: 2.45rem;
     margin-bottom: 3.6rem; }
   .footer__title {
@@ -1272,8 +1285,8 @@ img {
     flex-wrap: wrap;
     margin-bottom: 3rem; }
   .direction .social__link {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 39px;
+    height: 39px;
     margin-right: 1rem;
     background: #E3B873;
     background-repeat: no-repeat;
@@ -1467,6 +1480,10 @@ img {
   .contacts__button {
     margin-left: 1rem; } }
 
+@media screen and (max-width: 1030px) {
+  .clientele__text {
+    min-height: 426px; } }
+
 @media screen and (max-width: 1040px) {
   .section-title__text {
     max-width: 23rem; }
@@ -1474,6 +1491,8 @@ img {
     right: 15px; } }
 
 @media screen and (max-width: 992px) {
+  .team {
+    margin-bottom: 18rem; }
   .nav {
     display: none; }
   .phone:hover {
@@ -1482,8 +1501,8 @@ img {
     display: none; }
   .hero__content {
     margin-left: 0; }
-  .clientele__card {
-    max-width: 18rem; }
+  .clientele {
+    display: none; }
   .map {
     max-width: 48rem; }
   .button--primary:hover {
@@ -1502,12 +1521,14 @@ img {
       opacity: 0; } }
 
 @media screen and (max-width: 820px) {
+  .team {
+    margin-bottom: 18rem; }
   .clientele {
     display: none; }
   .team {
     margin-bottom: 16rem; } }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 759px) {
   .hero {
     padding-top: 5rem; }
   .contacts__button {
@@ -1609,6 +1630,7 @@ img {
   .section-title--left {
     text-align: center; }
   .section-title__heading {
+    padding-top: 2rem;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -1643,7 +1665,7 @@ img {
       order: -1;
       width: 90%;
       margin: auto;
-      height: 18.21rem;
+      min-height: 26.5rem;
       margin-bottom: 3.07rem; }
     .footer__menu {
       display: none; }
@@ -1684,7 +1706,6 @@ img {
     .hero__scroll-down {
       display: none; }
     .hero__content {
-      max-width: 22.86rem;
       margin-left: auto;
       margin-right: auto; }
     .hero__text {
@@ -1693,14 +1714,16 @@ img {
       margin-bottom: 2.28rem; }
     .hero__button {
       display: block;
-      min-width: 22.86rem;
+      min-width: 100%;
       margin-bottom: 1.85rem; }
   .swiper-slider-image {
     margin-bottom: 1.5rem;
     margin-top: 0;
     max-height: 20rem; } }
 
-@media screen and (max-height: 520px) {
+@media screen and (min-height: 520px) {
+  .footer__map {
+    height: 200px; }
   .hero__scroll-down {
     display: none; } }
 

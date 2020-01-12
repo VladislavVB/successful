@@ -8,6 +8,7 @@
   font-weight: 500
   &:hover
     cursor: pointer
+    background-color: $darkPrime
   &--primary
     background-color: $primary
     color: $light
@@ -43,6 +44,11 @@
   font-size: 1.285rem
   color: $light
   padding: 0.5rem 0
+  &:focus
+    outline: none
+    box-shadow: inset 2px 2px $primary, inset -2px -2px $primary
+  &-group
+    position: relative
   &--light
     &::placeholder
       color: $light
@@ -85,16 +91,18 @@
 input
    &.invalid
       border-bottom: none
-     
 div
   &.invalid
-    outline: none
-    color: $primary
     position: absolute
+    width: 100%
+    bottom: -12px
+    color: $primary
+    border-top: 1px solid $primary
 .control
   &__policy .invalid
     text-align: center
   &__input
+    color: $gray
     &-group .invalid
       bottom: -3px
 .footer

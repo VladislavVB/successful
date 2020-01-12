@@ -71,7 +71,10 @@ $(document).ready(function () {
         minlength: 2
       },
 
-      userPhone: "required",
+      userPhone: {
+        required: true,
+        minlength: 17
+      },
  
       userEmail: {
         required: true,
@@ -132,7 +135,10 @@ $(document).ready(function () {
         required: true,
         minlength: 2
       },
-      userPhone: "required",
+      userPhone: {
+        required: true,
+        minlength: 17
+      },
       policyTick: "required",
   }, 
   messages: {
@@ -160,7 +166,10 @@ $(document).ready(function () {
         required: true,
         minlength: 2
       },
-      userPhone: "required",
+      userPhone: {
+        required: true,
+        minlength: 17
+      },
       userQuestion: "required",
       policyMark: "required",
       
@@ -198,7 +207,7 @@ function videoPlay(event){
 
 });
 
-//КАРТА!!!
+/*//КАРТА!!!
 //Переменная для включения/отключения индикатора загрузки
 var spinner = $('.ymap-container').children('.loader');
 //Переменная для определения была ли хоть раз загружена Яндекс.Карта (чтобы избежать повторной загрузки при наведении)
@@ -317,10 +326,43 @@ var ymap = function() {
     }
   );  
 }
- 
 $(function() {
  
   //Запускаем основную функцию
   ymap();
  
+});*/
+// Yandex карта
+YaMapsShown = false;
+YaMapsMinShown = false;
+$(window).scroll(function () {
+  if (!YaMapsShown) {
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - 700) {
+      showYaMaps();
+      YaMapsShown = true;
+    }
+  }
 });
+
+function showYaMaps() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac5bb57cf85273372e734f7def62f256953ad064eedb76e5e5b9827bc18ec6a06&amp;width=100%25&amp;height=465&amp;lang=ru_RU&amp;scroll=false";
+  document.getElementById("YaMaps").appendChild(script);
+};
+
+$(window).scroll(function () {
+  if (!YaMapsMinShown) {
+    if ($(window).scrollTop() + $(window).height() > $(document).height() - 500) {
+      showYaMapsMin();
+      YaMapsMinShown = true;
+    }
+  }
+});
+
+function showYaMapsMin() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A9a60de6cf27682651fbcaac0fd23aa6bf89d1b64045e88a7b770168feac6baa2&amp;width=100%25&amp;height=255&amp;lang=ru_RU&amp;scroll=false";
+  document.getElementById("YaMapsMin").appendChild(script);
+}
