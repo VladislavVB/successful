@@ -1182,7 +1182,7 @@ img {
     max-width: 42rem; }
   .footer__map {
     width: 66rem;
-    height: 33.214rem;
+    max-height: 33.214rem;
     margin-bottom: 4.4rem; }
 
 .map__iframe {
@@ -1665,8 +1665,8 @@ img {
       order: -1;
       width: 90%;
       margin: auto;
-      min-height: 26.5rem;
-      margin-bottom: 3.07rem; }
+      margin-bottom: 3.07rem;
+      max-height: 28rem; }
     .footer__menu {
       display: none; }
   .direction {
@@ -1721,11 +1721,13 @@ img {
     margin-top: 0;
     max-height: 20rem; } }
 
-@media screen and (min-height: 520px) {
-  .footer__map {
-    height: 200px; }
+@media screen and (max-height: 520px) {
   .hero__scroll-down {
     display: none; } }
+
+@media screen and (max-height: 340px) {
+  .footer__map {
+    max-height: 15rem; } }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .hero {

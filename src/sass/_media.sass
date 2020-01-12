@@ -203,8 +203,8 @@
       order: -1
       width: 90%
       margin: auto
-      min-height: 26.5rem
       margin-bottom: 3.07rem
+      max-height: 28rem
     &__menu
       display: none
   .direction
@@ -262,13 +262,14 @@
         margin-bottom: 1.5rem
         margin-top: 0
         max-height: 20rem
-@media screen and ( min-height: 520px )
-  .footer
-    &__map
-      height: 200px
+@media screen and ( max-height: 520px )
   .hero
     &__scroll-down
       display: none
+@media screen and ( max-height: 340px )
+  .footer
+    &__map
+      max-height: 15rem
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
   .hero
     display: flex
