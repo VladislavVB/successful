@@ -1,16 +1,16 @@
-if(!window.jQuery){
-document.write('<script type="text/javascript" src="/js/lib/jquery.js"></script>')
+if (!window.jQuery) {
+  document.write('<script type="text/javascript" src="/js/lib/jquery.js"></script>')
 }
 
 $(document).ready(function () {
- 
+
   var modal = $('.modal');
   var modalUp = $('.modal-up');
-  
+
   var modalForm = $('.modal__form');
   var controlForm = $('.control__form');
   var footerForm = $('.footer__form');
-  
+
   onSubmitForm(modalForm)
   onSubmitForm(controlForm)
   onSubmitForm(footerForm)
@@ -59,10 +59,10 @@ $(document).ready(function () {
     errorClass: "invalid",
     errorElement: "div",
     errorPlacement: function (error, element) {
-        if (element.attr("type") == "checkbox") {
-          return element.next('label').append(error);
-        }
-        error.insertAfter($(element));
+      if (element.attr("type") == "checkbox") {
+        return element.next('label').append(error);
+      }
+      error.insertAfter($(element));
     },
     rules: {
 
@@ -75,14 +75,14 @@ $(document).ready(function () {
         required: true,
         minlength: 17
       },
- 
+
       userEmail: {
         required: true,
         email: true
       },
 
       policyCheckbox: "required",
-    }, 
+    },
     messages: {
       userName: {
         required: "Имя обязательно для заполнения",
@@ -97,39 +97,48 @@ $(document).ready(function () {
     }
   });
 
-  function onSubmitForm(form) { 
-   form.submit(function (event) {
-     if (form.valid()) {
-       event.preventDefault();
+  function onSubmitForm(form) {
+    form.submit(function (event) {
+      if (form.valid()) {
+        event.preventDefault();
         $.ajax({
           type: "POST",
           url: "send.php",
           data: $(this).serialize(),
           success: function (response) {
-           form[0].reset();
-           $('.modal').removeClass('modal--visible'); 
-           $('.modal-up').addClass('modal-up--visible');
+            form[0].reset();
+            $('.modal').removeClass('modal--visible');
+            $('.modal-up').addClass('modal-up--visible');
             console.log(response)
             ym('56835025', 'reachGoal', 'submit'); return true
-          
-        },
+
+          },
           error: function (jqXHR, textStatus, errorThrown) {
             console.error(jqXHR + " " + textStatus);
-            
-       }
-       });
-  }});
+
+          }
+        });
+      }
+    });
   }
+
+  var $page = $('html, body');
+  $('a[href*="#"]').click(function () {
+    $page.animate({
+      scrollTop: $($.attr(this, 'href')).offset().top
+    }, 400);
+    return false;
+  });
 
   controlForm.validate({
     errorClass: "invalid",
     errorElement: "div",
     errorPlacement: function (error, element) {
-        if (element.attr("type") == "checkbox") {
-          return element.next('label').append(error);
-        }
-        error.insertAfter($(element));
-    },    
+      if (element.attr("type") == "checkbox") {
+        return element.next('label').append(error);
+      }
+      error.insertAfter($(element));
+    },
     rules: {
       userName: {
         required: true,
@@ -140,26 +149,26 @@ $(document).ready(function () {
         minlength: 17
       },
       policyTick: "required",
-  }, 
-  messages: {
-    userName: {
-      required: "Имя обязательно для заполнения",
-      minlength: "Имя не короче 2-х букв"
     },
-    userPhone: "Телефон обязателен для заполнения",
-    policyTick: "Обязательно для заполнения",
-  }
+    messages: {
+      userName: {
+        required: "Имя обязательно для заполнения",
+        minlength: "Имя не короче 2-х букв"
+      },
+      userPhone: "Телефон обязателен для заполнения",
+      policyTick: "Обязательно для заполнения",
+    }
   });
 
-   footerForm.validate({
+  footerForm.validate({
     errorClass: "invalid",
-     errorElement: "div",
+    errorElement: "div",
     errorPlacement: function (error, element) {
-        if (element.attr("type") == "checkbox") {
-          return element.next('label').append(error);
-        }
-        error.insertAfter($(element));
-    },    
+      if (element.attr("type") == "checkbox") {
+        return element.next('label').append(error);
+      }
+      error.insertAfter($(element));
+    },
     rules: {
 
       userName: {
@@ -172,38 +181,38 @@ $(document).ready(function () {
       },
       userQuestion: "required",
       policyMark: "required",
-      
-  }, 
-  messages: {
-   userName: {
-      required: "Имя обязательно для заполнения",
-      minlength: "Имя не короче 2-х букв"
+
     },
-    userPhone: "Телефон обязателен для заполнения",
-    userQuestion: "Пожалуйста, напишите Ваш вопрос",
-    policyMark: "Обязательно для заполнения",
-  }
-  });
-  
-  $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "Ваш номер телефона:" });
-
-//видео
-
-var player;
-$('.video__play').on('click', function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '465',
-    width: '100%',
-    videoId: 'ef0JqU-4dOc',
-    events: {
-      'onReady': videoPlay,
+    messages: {
+      userName: {
+        required: "Имя обязательно для заполнения",
+        minlength: "Имя не короче 2-х букв"
+      },
+      userPhone: "Телефон обязателен для заполнения",
+      userQuestion: "Пожалуйста, напишите Ваш вопрос",
+      policyMark: "Обязательно для заполнения",
     }
   });
-})
 
-function videoPlay(event){
-  event.target.playVideo();
-}
+  $('[type=tel]').mask('+7(000) 000-00-00', { placeholder: "Ваш номер телефона:" });
+
+  //видео
+
+  var player;
+  $('.video__play').on('click', function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '465',
+      width: '100%',
+      videoId: 'ef0JqU-4dOc',
+      events: {
+        'onReady': videoPlay,
+      }
+    });
+  })
+
+  function videoPlay(event) {
+    event.target.playVideo();
+  }
 
 });
 
@@ -311,13 +320,13 @@ var ymap = function() {
   $('.ymap-container').mouseenter(function(){
       if (!check_if_load) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
  
-	  	// Чтобы не было повторной загрузки карты, мы изменяем значение переменной
+      // Чтобы не было повторной загрузки карты, мы изменяем значение переменной
         check_if_load = true; 
  
-		// Показываем индикатор загрузки до тех пор, пока карта не загрузится
+    // Показываем индикатор загрузки до тех пор, пока карта не загрузится
         spinner.addClass('is-active');
  
-		// Загружаем API Яндекс.Карт
+    // Загружаем API Яндекс.Карт
         loadScript("https://api-maps.yandex.ru/2.1/?apikey=fd888608-1cb5-480b-83f3-03c118516a8e&lang=ru_RU", function(){
            // Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором &#34;map-yandex&#34;
            ymaps.load(init);
