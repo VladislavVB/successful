@@ -1,0 +1,57 @@
+#largeImg
+  border: solid 1px $primary
+
+  padding: 5px
+
+#thumbs a
+  border: solid 1px $primary
+  width: 100px
+  max-height: 100px
+  padding: 3px
+  margin: 2px
+  float: left
+  img
+    object-fit: cover
+#thumbs a:hover
+  border-color: $primary
+
+#thumbs li
+  list-style: none
+
+#thumbs
+  margin: 0
+  padding: 0
+  text-align: center
+  display: flex
+  // justify-content: center
+  max-width: 100%
+  overflow-x: auto
+
+  // &::-webkit-scrollbar
+  //   height: 10px
+  //   background-color: #f9f9fd
+  // &::-webkit-scrollbar-track
+  //   border-radius: 10px
+  //   background-color: #18aaaa
+  // &::-webkit-scrollbar-track
+  //   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2)
+  //   border-radius: 10px
+  //   background-color: #f9f9fd
+.gallery
+  &-wraper
+    display: flex
+    justify-content: center
+    flex-direction: column
+    &-largeimg
+      text-align: center
+      width: 700px
+      max-height: 500px
+      margin: auto
+      display: flex
+      justify-content: center
+      align-items: center
+      overflow: hidden
+      margin-bottom: 25px
+      img
+        width: 100%
+

@@ -1944,6 +1944,79 @@ img {
   color: #ffffff;
 }
 
+#largeImg {
+  border: solid 1px #E3B873;
+  padding: 5px;
+}
+
+#thumbs a {
+  border: solid 1px #E3B873;
+  width: 100px;
+  max-height: 100px;
+  padding: 3px;
+  margin: 2px;
+  float: left;
+}
+
+#thumbs a img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#thumbs a:hover {
+  border-color: #E3B873;
+}
+
+#thumbs li {
+  list-style: none;
+}
+
+#thumbs {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.gallery-wraper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gallery-wraper-largeimg {
+  text-align: center;
+  width: 700px;
+  max-height: 500px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.gallery-wraper-largeimg img {
+  width: 100%;
+}
+
 @media screen and (max-width: 1370px) {
   .card__text--small {
     max-width: 18rem;
@@ -1984,6 +2057,9 @@ img {
 }
 
 @media screen and (max-width: 992px) {
+  .gallery {
+    padding-bottom: 400px;
+  }
   .team {
     margin-bottom: 18rem;
   }
@@ -2038,6 +2114,12 @@ img {
   }
   .team {
     margin-bottom: 16rem;
+  }
+  .gallery-wraper-largeimg {
+    width: 100%;
+  }
+  #thumbs {
+    width: 100%;
   }
 }
 
