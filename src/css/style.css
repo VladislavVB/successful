@@ -1978,6 +1978,9 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -2120,6 +2123,9 @@ img {
   }
   #thumbs {
     width: 100%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
   }
 }
 
@@ -2356,6 +2362,9 @@ img {
 }
 
 @media screen and (max-width: 570px) {
+  .gallery {
+    padding-bottom: 250px;
+  }
   .section-title__description {
     max-width: 31rem;
     font-size: 1.07rem;
